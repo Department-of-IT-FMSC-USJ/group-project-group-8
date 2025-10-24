@@ -1,0 +1,23 @@
+body {
+  min-height: max(884px, 100dvh);
+}
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+  animation: fadeInUp 0.45s ease-out both;
+}
+
+.cta-wrap {
+  animation: fadeInUp 0.55s ease-out both;
+}
+
+
+.cta-primary { transition: filter 0.15s ease; }
+.cta-primary:hover { filter: brightness(0.96); }
+
+.cta-secondary { transition: background-color 0.15s ease, color 0.15s ease; }
