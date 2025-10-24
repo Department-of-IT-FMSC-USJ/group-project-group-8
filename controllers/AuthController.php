@@ -95,7 +95,7 @@ class AuthController {
         $phone = $_POST['phone'] ?? '';
         $address = $_POST['address'] ?? '';
         
-        // Validation
+       
         if (empty($fullName) || empty($email) || empty($password)) {
             $_SESSION['error'] = 'Please fill in all required fields';
             header('Location: index.php?page=user-register');
@@ -110,7 +110,7 @@ class AuthController {
         
         $userModel = new User();
         
-        // Check if email already exists
+       
         if ($userModel->findByEmail($email)) {
             $_SESSION['error'] = 'Email already registered';
             header('Location: index.php?page=user-register');
@@ -155,7 +155,7 @@ class AuthController {
         $phone = $_POST['phone'] ?? '';
         $accessCode = $_POST['access_code'] ?? '';
         
-        // Validate access code
+       
         define('OFFICER_ACCESS_CODE', 'BANK2025SECRET');
         
         if ($accessCode !== OFFICER_ACCESS_CODE) {
@@ -164,7 +164,7 @@ class AuthController {
             exit;
         }
         
-        // Validation
+        
         if (empty($fullName) || empty($email) || empty($password) || empty($branch)) {
             $_SESSION['error'] = 'Please fill in all required fields';
             header('Location: index.php?page=officer-register');
@@ -185,7 +185,7 @@ class AuthController {
         
         $officerModel = new BankOfficer();
         
-        // Check if email already exists
+        
         if ($officerModel->findByEmail($email)) {
             $_SESSION['error'] = 'Email already registered';
             header('Location: index.php?page=officer-register');
