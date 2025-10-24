@@ -1,14 +1,10 @@
-/* login.css */
 
-/* Fill viewport nicely */
 body { min-height: max(884px, 100dvh); }
 
-/* Optional: tidy icon weight if you use Material Symbols */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-/* Subtle enter animation for the main form */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
