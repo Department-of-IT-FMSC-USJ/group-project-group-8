@@ -78,7 +78,7 @@ ob_start();
     </div>
 </main>
 
-<!-- Update Status Modal -->
+
 <div id="updateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-800 rounded-xl max-w-md w-full p-6">
         <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Update Delivery Status</h2>
