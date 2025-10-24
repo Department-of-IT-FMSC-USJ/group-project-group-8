@@ -77,3 +77,32 @@ CREATE TABLE meetings (
     INDEX idx_status (status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE VIEW upcoming_expiries AS
+SELECT 
+    c.card_id,
+    c.card_number,
+    c.cardholder_name,
+    c.branch,
+    c.expiry_date,
+    u.user_id,
+    u.full_name AS user_name,
+    u.email,
+    u.phone,
+    DATEDIFF(c.expiry_date, CURDATE()) AS days_until_expiry
+FROM cards c
+JOIN users u ON c.user_id = u.user_id
+WHERE c.is_active = TRUE 
+  AND c.expiry_date >= CURDATE()
+  AND DATEDIFF(c.expiry_date, CURDATE()) <= 90
+ORDER BY c.expiry_date ASC;
+
+CREATE VIEW admin_dashboard_stats AS
+SELECT 
+    (SELECT COUNT(*) FROM cards WHERE is_active = TRUE) AS total_active_cards,
+    (SELECT COUNT(*) FROM cards WHERE is_active = TRUE AND DATEDIFF(expiry_date, CURDATE()) <= 30) AS expiring_this_month,
+    (SELECT COUNT(*) FROM meetings WHERE status = 'scheduled') AS pending_meetings,
+    (SELECT COUNT(*) FROM card_renewals WHERE delivery_status = 'processing') AS processing_renewals,
+    (SELECT COUNT(*) FROM users) AS total_users;
+
+
