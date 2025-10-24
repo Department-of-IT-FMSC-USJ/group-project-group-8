@@ -22,7 +22,7 @@ ob_start();
 
 <main class="flex-grow p-4">
     <div class="max-w-6xl mx-auto space-y-6">
-        <!-- Statistics -->
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
                 <h3 class="text-sm font-medium opacity-90 mb-1">Upcoming Expiries</h3>
@@ -43,7 +43,7 @@ ob_start();
             </div>
         </div>
         
-        <!-- Quick Actions -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <a href="index.php?page=admin-expiries" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm hover:shadow-md transition">
                 <div class="flex items-center gap-3">
@@ -90,7 +90,7 @@ ob_start();
             </a>
         </div>
         
-        <!-- Upcoming Expiries -->
+        
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-6">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Cards Expiring Soon</h2>
             
