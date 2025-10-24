@@ -109,7 +109,7 @@ class UserController {
         $meetingModel = new Meeting();
         $meeting = $meetingModel->findById($meetingId);
         
-        // Check if meeting belongs to user
+        
         if (!$meeting || $meeting['user_id'] != $userId) {
             $_SESSION['error'] = 'Meeting not found';
             header('Location: index.php?page=user-dashboard');

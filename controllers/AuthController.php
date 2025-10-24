@@ -13,7 +13,6 @@ class AuthController {
         include __DIR__ . '/../views/auth/officer-login.php';
     }
     
-  
     public function userLogin() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: index.php?page=user-login');
@@ -80,7 +79,6 @@ class AuthController {
             exit;
         }
     }
-    
  
     public function userRegister() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -95,7 +93,6 @@ class AuthController {
         $phone = $_POST['phone'] ?? '';
         $address = $_POST['address'] ?? '';
         
-        // Validation
         if (empty($fullName) || empty($email) || empty($password)) {
             $_SESSION['error'] = 'Please fill in all required fields';
             header('Location: index.php?page=user-register');
@@ -110,7 +107,6 @@ class AuthController {
         
         $userModel = new User();
         
-        // Check if email already exists
         if ($userModel->findByEmail($email)) {
             $_SESSION['error'] = 'Email already registered';
             header('Location: index.php?page=user-register');
@@ -130,16 +126,13 @@ class AuthController {
         }
     }
     
-
     public function userRegisterPage() {
         include __DIR__ . '/../views/auth/user-register.php';
     }
-    
-    
+        
     public function officerRegisterPage() {
         include __DIR__ . '/../views/auth/officer-register.php';
     }
-    
     
     public function officerRegister() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -155,7 +148,7 @@ class AuthController {
         $phone = $_POST['phone'] ?? '';
         $accessCode = $_POST['access_code'] ?? '';
         
-        // Validate access code
+       
         define('OFFICER_ACCESS_CODE', 'BANK2025SECRET');
         
         if ($accessCode !== OFFICER_ACCESS_CODE) {
@@ -163,8 +156,7 @@ class AuthController {
             header('Location: index.php?page=officer-register');
             exit;
         }
-        
-        // Validation
+             
         if (empty($fullName) || empty($email) || empty($password) || empty($branch)) {
             $_SESSION['error'] = 'Please fill in all required fields';
             header('Location: index.php?page=officer-register');
@@ -184,8 +176,7 @@ class AuthController {
         }
         
         $officerModel = new BankOfficer();
-        
-        // Check if email already exists
+             
         if ($officerModel->findByEmail($email)) {
             $_SESSION['error'] = 'Email already registered';
             header('Location: index.php?page=officer-register');
@@ -205,7 +196,6 @@ class AuthController {
         }
     }
     
-
     public function logout() {
         session_destroy();
         header('Location: index.php');
@@ -215,12 +205,10 @@ class AuthController {
     public static function isUserLoggedIn() {
         return isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'user';
     }
-    
-  
+     
     public static function isOfficerLoggedIn() {
         return isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'officer';
     }
-    
     
     public static function requireUser() {
         if (!self::isUserLoggedIn()) {
@@ -228,8 +216,7 @@ class AuthController {
             exit;
         }
     }
-    
-    
+       
     public static function requireOfficer() {
         if (!self::isOfficerLoggedIn()) {
             header('Location: index.php?page=officer-login');
