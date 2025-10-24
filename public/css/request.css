@@ -1,11 +1,8 @@
-/* request.css */
 
-/* Make sure page fills viewport */
 body {
   min-height: max(884px, 100dvh);
 }
 
-/* Optional fade-in animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -17,12 +14,10 @@ body {
   }
 }
 
-/* Animate main content */
 .main-content {
   animation: fadeInUp 0.4s ease-out;
 }
 
-/* Optional: smooth hover on close button */
 .close-btn {
   transition: background-color 0.2s ease;
 }
