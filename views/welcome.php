@@ -7,7 +7,7 @@ ob_start();
 <div class="welcome-container flex items-center justify-center min-h-screen p-4">
     <div class="text-center">
         <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6TX5p1UzP7NRvJCHRqZKpCQ4ewCzlBuwjmzydSSgjGyQgcvZCnj6FBY6G9snePTucO7Nx_g85xJ4YtMjCRB-gUIy4z5pYY8mbwqK4JAjYNrVeJv_Z3TuB2dnoJmbIRARwuLCSyt5gYstmkzokxNRYUcPfEiDw6V0cGmn123WKsR69XvXshr0YEJo_NBEdx1VFE0GJhLcV4g8X-BHTHlpo5gV9tQR24uK-J4pK5GW4Z9xy1sYCzpeq8W0IYeqD1LZv7q37-QPR_OZX"
+            src="https://png.pngtree.com/png-vector/20220706/ourmid/pngtree-debit-card-payment-png-image_5705181.png"
             alt="Debit Card Renewal System"
             class="welcome-logo mx-auto mb-8"
         />
