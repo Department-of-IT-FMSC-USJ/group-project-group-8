@@ -1,8 +1,4 @@
 <?php
-/**
- * Admin Controller
- * Handles bank officer dashboard and operations
- */
 
 require_once __DIR__ . '/../models/Card.php';
 require_once __DIR__ . '/../models/User.php';
@@ -13,9 +9,6 @@ require_once __DIR__ . '/AuthController.php';
 
 class AdminController {
     
-    /**
-     * Show admin dashboard
-     */
     public function dashboard() {
         AuthController::requireOfficer();
         
@@ -26,7 +19,6 @@ class AdminController {
         $meetingModel = new Meeting();
         $renewalModel = new CardRenewal();
         
-        // Get statistics
         $upcomingExpiries = $cardModel->getUpcomingExpiriesByBranch($branch, 90);
         $myMeetings = $meetingModel->getByOfficerId($officerId);
         $renewals = $renewalModel->getByBranch($branch);
@@ -34,9 +26,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/dashboard.php';
     }
     
-    /**
-     * View users list
-     */
+
     public function viewUsers() {
         AuthController::requireOfficer();
         
@@ -48,9 +38,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/users.php';
     }
     
-    /**
-     * View upcoming card expiries
-     */
+    
     public function viewExpiries() {
         AuthController::requireOfficer();
         
@@ -62,9 +50,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/expiries.php';
     }
     
-    /**
-     * Show schedule meeting page
-     */
+    
     public function scheduleMeetingPage() {
         AuthController::requireOfficer();
         
@@ -82,9 +68,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/schedule-meeting.php';
     }
     
-    /**
-     * Schedule meeting
-     */
+    
     public function scheduleMeeting() {
         AuthController::requireOfficer();
         
@@ -132,9 +116,7 @@ class AdminController {
         }
     }
     
-    /**
-     * View meetings
-     */
+    
     public function viewMeetings() {
         AuthController::requireOfficer();
         
@@ -146,9 +128,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/meetings.php';
     }
     
-    /**
-     * Update meeting status
-     */
+    
     public function updateMeetingStatus() {
         AuthController::requireOfficer();
         
@@ -174,9 +154,7 @@ class AdminController {
         exit;
     }
     
-    /**
-     * View renewals
-     */
+    
     public function viewRenewals() {
         AuthController::requireOfficer();
         
@@ -188,9 +166,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/renewals.php';
     }
     
-    /**
-     * Show create renewal page
-     */
+    
     public function createRenewalPage() {
         AuthController::requireOfficer();
         
@@ -209,9 +185,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/create-renewal.php';
     }
     
-    /**
-     * Create renewal request
-     */
+    
     public function createRenewal() {
         AuthController::requireOfficer();
         
@@ -238,9 +212,7 @@ class AdminController {
         }
     }
     
-    /**
-     * Update delivery status
-     */
+    
     public function updateDeliveryStatus() {
         AuthController::requireOfficer();
         
