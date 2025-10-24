@@ -43,3 +43,25 @@ CREATE TABLE card_renewals (
     INDEX idx_delivery_status (delivery_status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE meetings (
+    meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+    card_id INT NOT NULL,
+    user_id INT NOT NULL,
+    officer_id INT NOT NULL,
+    meeting_date DATETIME NOT NULL,
+    zoom_link TEXT,
+    status ENUM('scheduled', 'confirmed', 'completed', 'cancelled') DEFAULT 'scheduled',
+    user_confirmed BOOLEAN DEFAULT FALSE,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (card_id) REFERENCES cards(card_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (officer_id) REFERENCES bank_officers(officer_id) ON DELETE CASCADE,
+    INDEX idx_card_id (card_id),
+    INDEX idx_user_id (user_id),
+    INDEX idx_officer_id (officer_id),
+    INDEX idx_meeting_date (meeting_date),
+    INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
